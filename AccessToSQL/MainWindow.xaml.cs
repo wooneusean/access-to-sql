@@ -31,6 +31,7 @@ namespace AccessToSQL
         string src = "";
         string table = "";
         List<object> cols = new List<object>();
+        List<string> stringArr = new List<string>();
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             src = srcTxt.Text;
@@ -38,13 +39,11 @@ namespace AccessToSQL
             string output = outTxt.Text;
             string scriptString = "";
             string connString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + src;
-            Console.WriteLine(connString);
             using (OleDbConnection connection = new OleDbConnection(connString))
             {
                 connection.Open();
                 OleDbDataReader reader = null;
                 OleDbCommand command = new OleDbCommand("SELECT * FROM " + table, connection);
-                Console.WriteLine(command);
                 reader = command.ExecuteReader();
 
 
@@ -56,26 +55,21 @@ namespace AccessToSQL
                     cols.Add("`" + row[nameCol] + "`");
                 }
                 var result = string.Join(",", cols);
-                Console.WriteLine(result);
 
-
+                
 
                 scriptString = "INSERT INTO `" + table + "` (" + result + ") VALUES \n";
-                Console.WriteLine(scriptString);
-                List<object> stringArr = new List<object>();
-                foreach (DataRow row in tabName.Rows)
-                {
-                    stringArr = tabName.AsEnumerable().Select(r => r["ColumnName"]).ToList();
-                }
-                var strValue = string.Join(",",stringArr);
-                Console.WriteLine(strValue);
 
 
 
+                
                 while (reader.Read())
                 {
-                    scriptString += "(" + strValue + "),\n";
-                    Console.WriteLine(scriptString);
+                    string g = reader.GetString(0).ToString();
+                    string a = reader.GetString(1).ToString();
+                    string w = reader.GetString(2).ToString();
+                    string s = reader.GetString(3).ToString();
+                    scriptString += "(" + g + "," + a + "," + w + "," + s + "),\n";
                 }
             }
             File.WriteAllText(output, scriptString += ";");
