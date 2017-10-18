@@ -67,7 +67,7 @@ namespace AccessToSQL
                     int i = 0 - 1;
                     while (i++ < tabName.Rows.Count - 1)
                     {
-                        stringArr.Add("`" + reader.GetValue(i).ToString() + "`");
+                        stringArr.Add("'" + reader.GetValue(i).ToString() + "'");
                     }
                     var resultRow = string.Join(",", stringArr);
                     scriptValues.Add("(" + resultRow + ")");
