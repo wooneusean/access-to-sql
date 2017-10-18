@@ -32,6 +32,8 @@ namespace AccessToSQL
         string table = "";
         List<object> cols = new List<object>();
         List<string> stringArr = new List<string>();
+        List<string> scriptValues = new List<string>();
+        string parsedValues = "";
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             src = srcTxt.Text;
@@ -55,24 +57,27 @@ namespace AccessToSQL
                     cols.Add("`" + row[nameCol] + "`");
                 }
                 var result = string.Join(",", cols);
-
-                
+                cols.Clear();
 
                 scriptString = "INSERT INTO `" + table + "` (" + result + ") VALUES \n";
 
 
-
-                
                 while (reader.Read())
                 {
-                    string g = reader.GetString(0).ToString();
-                    string a = reader.GetString(1).ToString();
-                    string w = reader.GetString(2).ToString();
-                    string s = reader.GetString(3).ToString();
-                    scriptString += "(" + g + "," + a + "," + w + "," + s + "),\n";
+                    int i = 0 - 1;
+                    while (i++ < tabName.Rows.Count - 1)
+                    {
+                        stringArr.Add("`" + reader.GetValue(i).ToString() + "`");
+                    }
+                    var resultRow = string.Join(",", stringArr);
+                    scriptValues.Add("(" + resultRow + ")");
+                    parsedValues = string.Join(",\n", scriptValues);
+                    stringArr.Clear();
                 }
+                scriptString += parsedValues;
+                File.WriteAllText(output, scriptString += ";");
             }
-            File.WriteAllText(output, scriptString += ";");
+            
         }
 
         private void srcTxt_TextChanged(object sender, TextChangedEventArgs e)
