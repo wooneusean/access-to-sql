@@ -60,7 +60,7 @@ namespace AccessToSQL
 
 
 
-                scriptString = "INSERT INTO `" + table + "` (" + result + ") VALUES\n";
+                scriptString = "INSERT INTO `" + table + "` (" + result + ") VALUES \n";
                 Console.WriteLine(scriptString);
                 List<object> stringArr = new List<object>();
                 foreach (DataRow row in tabName.Rows)
@@ -95,10 +95,13 @@ namespace AccessToSQL
                 using (OleDbConnection connection = new OleDbConnection(connString))
                 {
                     connection.Open();
-                    DataTable schema = connection.GetSchema("Tables");
-                    foreach (DataRow row in schema.Rows)
+                    string[] restrictions = new string[4];
+                    restrictions[3] = "Table";
+                    // Get list of user tables
+                    var tabName = connection.GetSchema("Tables", restrictions);
+                    for (int i = 0; i < tabName.Rows.Count; i++)
                     {
-                        tableCB.Items.Add(row.Field<string>("TABLE_NAME"));
+                        tableCB.Items.Add(tabName.Rows[i][2].ToString());
                     }
 
                 }
