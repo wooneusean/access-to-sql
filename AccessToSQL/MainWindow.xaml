@@ -1,27 +1,22 @@
-﻿<Window x:Class="AccessToSQL.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccessToSQL"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="AccessToSQL.MainWindow"
         mc:Ignorable="d"
-        Title="AccessToSQL" Height="259" Width="533">
+        Title="AccessToSQL" Height="265" Width="529">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="68*"/>
-            <ColumnDefinition Width="107*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Margin="1,0,-1,0" Grid.ColumnSpan="2">
-            <Label x:Name="label" Content="Access Database Directory:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="srcTxt" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="472" Margin="10,41,0,0" TextChanged="srcTxt_TextChanged"/>
-            <Button x:Name="button" Content="..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="28" Margin="487,41,0,0" Height="23" Click="button_Click"/>
-            <Label x:Name="label1" Content="Table to Convert:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,69,0,0"/>
-            <ComboBox x:Name="tableCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="505" Margin="10,100,0,0"/>
-            <Label x:Name="label2" Content="Output Location:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,127,0,0"/>
-            <TextBox x:Name="outTxt" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="467" Margin="15,158,0,0"/>
-            <Button x:Name="button_Copy" Content="..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="28" Margin="487,158,0,0" Height="23"/>
-            <Button x:Name="button1" Content="Convert" HorizontalAlignment="Center" VerticalAlignment="Center" Width="109" Height="32" Margin="208,186,208,10" Click="button1_Click"/>
-        </Grid>
+        <Grid/>
+        <Button x:Name="button" Content="Get Tables" HorizontalAlignment="Left" VerticalAlignment="Top" Width="78" Margin="432,41,0,0" Height="23" Click="button_Click" Grid.Column="1"/>
+        <Label x:Name="inDirLbl" Content="Access Database Directory:" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="152"/>
+        <TextBox x:Name="srcTxt" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="422" Margin="5,41,0,0" TextChanged="srcTxt_TextChanged" Grid.Column="1"/>
+        <Label x:Name="label1" Content="Table to Convert:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,69,0,0" Grid.Column="1" Height="26" Width="99"/>
+        <ComboBox x:Name="tableCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="505" Margin="5,100,0,0" SelectionChanged="tableCB_SelectionChanged" Grid.Column="1" Height="22"/>
+        <Label x:Name="label2" Content="Output Location:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,127,0,0" Grid.Column="1" Height="26" Width="99"/>
+        <TextBox x:Name="outTxt" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Margin="10,158,0,0" TextChanged="outTxt_TextChanged" Grid.Column="1"/>
+        <Button x:Name="button1" Content="Convert" Width="110" Height="32" Click="button1_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="10,186,0,0"/>
 
     </Grid>
 </Window>

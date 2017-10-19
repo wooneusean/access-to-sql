@@ -88,6 +88,8 @@ namespace AccessToSQL
         private void button_Click(object sender, RoutedEventArgs e)
         {
             string src = srcTxt.Text;
+            tableCB.Items.Clear();
+            inDirLbl.Content = "Access Database Directory:";
             try
             {
                 string connString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + src;
@@ -107,8 +109,18 @@ namespace AccessToSQL
             }
             catch (Exception)
             {
-                throw;
+                inDirLbl.Content = "Invalid path";
             }
+        }
+
+        private void outTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void tableCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            outTxt.Text = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + tableCB.SelectedItem.ToString() + ".sql";
         }
     }
 }
