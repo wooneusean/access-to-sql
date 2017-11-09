@@ -6,17 +6,28 @@
         xmlns:local="clr-namespace:AccessToSQL"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="AccessToSQL.MainWindow"
         mc:Ignorable="d"
-        Title="AccessToSQL" Height="265" Width="529">
-    <Grid>
-        <Grid/>
-        <Button x:Name="button" Content="Get Tables" HorizontalAlignment="Left" VerticalAlignment="Top" Width="78" Margin="432,41,0,0" Height="23" Click="button_Click" Grid.Column="1"/>
-        <Label x:Name="inDirLbl" Content="Access Database Directory:" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="152"/>
-        <TextBox x:Name="srcTxt" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="422" Margin="5,41,0,0" TextChanged="srcTxt_TextChanged" Grid.Column="1"/>
-        <Label x:Name="label1" Content="Table to Convert:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,69,0,0" Grid.Column="1" Height="26" Width="99"/>
-        <ComboBox x:Name="tableCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="505" Margin="5,100,0,0" SelectionChanged="tableCB_SelectionChanged" Grid.Column="1" Height="22"/>
-        <Label x:Name="label2" Content="Output Location:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,127,0,0" Grid.Column="1" Height="26" Width="99"/>
-        <TextBox x:Name="outTxt" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Margin="10,158,0,0" TextChanged="outTxt_TextChanged" Grid.Column="1"/>
-        <Button x:Name="button1" Content="Convert" Width="110" Height="32" Click="button1_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="10,186,0,0"/>
+        Title="AccessToSQL" Height="512" Width="550">
+    <Grid Margin="0">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF003D61" Offset="1"/>
+                <GradientStop Color="White"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2,0,0,0"/>
+        <Button x:Name="button" Content="Get Tables" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Margin="454,41,0,0" Height="23" Click="button_Click"/>
+        <Label x:Name="inDirLbl" Content="Access Database Directory:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="512"/>
+        <TextBox x:Name="srcTxt" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="439" Margin="10,41,0,0" TextChanged="srcTxt_TextChanged"/>
+        <Label x:Name="label1" Content="Table to Convert:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,319,0,0" Height="26" Width="500"/>
+        <ComboBox x:Name="tableCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="512" Margin="10,351,0,0" SelectionChanged="tableCB_SelectionChanged" Height="22"/>
+        <Label x:Name="label2" Content="Output Location:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,377,0,0" Height="26" Width="522"/>
+        <TextBox x:Name="outTxt" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="512" Margin="10,409,0,0" TextChanged="outTxt_TextChanged"/>
+        <Button x:Name="button1" Content="Convert" Width="110" Height="34" Click="button1_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,437,0,0"/>
+        <CheckBox x:Name="checkBox" Content="Query Mode" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy" Content="Query Mode" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,89,0,0" Height="26" Width="500"/>
+        <ComboBox x:Name="tableCB_Copy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="512" Margin="10,121,0,0" SelectionChanged="tableCB_SelectionChanged" Height="22" SelectedIndex="0">
+            <ComboBoxItem Content="NO_AUTO_VALUE_ON_ZERO (default)"/>
+        </ComboBox>
 
     </Grid>
 </Window>
